@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class VotingProgram {
+    public static void main(String[] args) {
+        // Create a Scanner object for taking input from the user
+        Scanner scanner = new Scanner(System.in);
+        
+        // Initialize input with 'Y' to start the loop
+        char input = 'Y';
+
+        // Loop until the user enters a key other than 'Y'
+        while (input == 'Y') {
+            // Prompt the user to enter their age
+            System.out.println("Enter your age:");
+            
+            // Read the age input from the user
+            int age = scanner.nextInt();
+
+            // Check if the person is allowed to vote based on age
+            if (age >= 18) {
+                System.out.println("Person is allowed to vote");
+            } else {
+                System.out.println("Person is not allowed to vote");
+            }
+
+            // Prompt the user to continue or exit
+            System.out.println("To continue press Y");
+            System.out.println("To exit press another key");
+
+            // Read the next character input from the user
+            input = scanner.next().charAt(0);
+        }
+
+        // Display a termination message when the loop exits
+        System.out.println("Program Terminated");
+
+        // Close the Scanner to prevent resource leaks
+        scanner.close();
+    }
+}
+OUTPUT
+  Enter your age: 12
+Person is not allowed to vote
+To continue press Y
+To exit press N
+Y
+Enter your age: 19
+Person is allowed to vote
+To continue press Y
+To exit press N
+N
+Program Terminated
