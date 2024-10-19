@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class FactorCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Given Number: ");
+        int givenNumber = scanner.nextInt();
+
+        System.out.print("N: ");
+        int n = scanner.nextInt();
+
+        // Validate input
+        if (givenNumber <= 0) {
+            System.out.println("Given Number must be positive.");
+            return;
+        }
+        if (n <= 0) {
+            System.out.println("N must be a positive integer.");
+            return;
+        }
+
+        // Find factors
+        List<Integer> factors = new ArrayList<>();
+        for (int i = 1; i <= givenNumber; i++) {
+            if (givenNumber % i == 0) {
+                factors.add(i);
+            }
+        }
+
+        // Number of factors
+        int numberOfFactors = factors.size();
+        System.out.println("Number of factors = " + numberOfFactors);
+
+        // Print nth factor
+        if (n > numberOfFactors) {
+            System.out.println("The given number has fewer than " + n + " factors.");
+        } else {
+            System.out.println(n + "th factor of " + givenNumber + " = " + factors.get(n - 1));
+        }
+    }
+}
+OUTPUT
+Given Number: 512
+N: 6
+Number of factors = 10
+6th factor of 512 = 8
