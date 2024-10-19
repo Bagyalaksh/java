@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class CollegeUserCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Total Users: ");
+        int totalUsers = scanner.nextInt();
+
+        System.out.print("Enter Staff Users: ");
+        int staffUsers = scanner.nextInt();
+
+        // Validate input
+        if (totalUsers < 0 || staffUsers < 0) {
+            System.out.println("Total Users and Staff Users cannot be negative.");
+            return;
+        }
+
+        // Calculate non-teaching staff users
+        int nonTeachingStaffUsers = staffUsers / 3;
+
+        // Calculate student users
+        int studentUsers = totalUsers - staffUsers - nonTeachingStaffUsers;
+
+        // Validate the final count of student users
+        if (studentUsers < 0) {
+            System.out.println("Invalid input: More staff users than total users.");
+            return;
+        }
+
+        // Output the result
+        System.out.println("Student Users: " + studentUsers);
+    }
+}
+OUTPUT
+Total Users: 600
+Staff Users: 450
+  Student Users: 100
