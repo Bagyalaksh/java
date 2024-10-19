@@ -1,0 +1,78 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PrimeNumbersAfterNth {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("N: ");
+        String input = scanner.nextLine();
+
+        // Validate and parse the input
+        int n;
+        try {
+            n = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a positive integer.");
+            return;
+        }
+
+        // Input validation
+        if (n <= 0) {
+            System.out.println("N must be a positive integer.");
+            return;
+        }
+
+        // Find the nth prime number
+        List<Integer> primes = new ArrayList<>();
+        int count = 0;
+        int num = 2; // Start checking for primes from 2
+
+        while (count < n) {
+            if (isPrime(num)) {
+                primes.add(num);
+                count++;
+            }
+            num++;
+        }
+
+        // Get the nth prime number
+        int nthPrime = primes.get(n - 1);
+        System.out.println(n + "rd Prime number is " + nthPrime);
+
+        // Find the next n prime numbers after the nth prime
+        List<Integer> nextPrimes = new ArrayList<>();
+        num = nthPrime + 1; // Start checking from the next number after the nth prime
+
+        while (nextPrimes.size() < n) {
+            if (isPrime(num)) {
+                nextPrimes.add(num);
+            }
+            num++;
+        }
+
+        // Print the next n prime numbers
+        System.out.print(n + " prime numbers after " + nthPrime + " are: ");
+        for (int i = 0; i < nextPrimes.size(); i++) {
+            System.out.print(nextPrimes.get(i));
+            if (i < nextPrimes.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Method to check if a number is prime
+    private static boolean isPrime(int num) {
+        if (num < 2) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+}
+OUTPUT
+N: 0
+N must be a positive integer.
