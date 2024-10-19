@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PerfectSquaresInRange {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter lower range: ");
+        int lowerRange = scanner.nextInt();
+
+        System.out.print("Enter upper range: ");
+        int upperRange = scanner.nextInt();
+
+        // Validate the ranges
+        if (lowerRange > upperRange) {
+            System.out.println("Lower range should be less than or equal to upper range.");
+            return;
+        }
+        if (upperRange < 0) {
+            System.out.println("Upper range must be a non-negative number.");
+            return;
+        }
+
+        List<Integer> perfectSquares = new ArrayList<>();
+
+        // Find perfect squares in the range
+        for (int i = 1; i * i <= upperRange; i++) {
+            int square = i * i;
+            if (square >= lowerRange && sumOfDigits(square) < 10) {
+                perfectSquares.add(square);
+            }
+        }
+
+        // Output the result
+        System.out.println(perfectSquares);
+    }
+
+    // Method to calculate the sum of digits of a number
+    private static int sumOfDigits(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+}
+
+OUTPUT
+Enter lower range: 50
+Enter upper range: 100
+[64]
